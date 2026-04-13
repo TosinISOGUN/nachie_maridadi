@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEO from "@/components/SEO";
 import aboutFabrics from "@/assets/about-fabrics.jpg";
 import craftsmanship from "@/assets/craftsmanship.jpg";
 
 const About = () => {
   return (
     <main>
+      <SEO 
+        title="Our Story — Nachie Maridadi"
+        description="Discover the heritage behind Nachie Maridadi. Handcrafting premium African fashion in our Nairobi atelier."
+        url="https://nachiemaridadi.vercel.app/about"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 section-padding">
         <div className="max-w-4xl mx-auto text-center">

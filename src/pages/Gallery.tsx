@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
@@ -32,6 +33,11 @@ const Gallery = () => {
 
   return (
     <main>
+      <SEO 
+        title="Our Creations — Nachie Maridadi Portfolio"
+        description="A visual journey through our finest bespoke creations. Ankara gowns, power suiting, and elegant occasion wear."
+        url="https://nachiemaridadi.vercel.app/gallery"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 section-padding">
         <div className="max-w-4xl mx-auto text-center">

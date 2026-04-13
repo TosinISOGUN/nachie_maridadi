@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroCarousel from "@/components/HeroCarousel";
 import BackdropSection from "@/components/BackdropSection";
@@ -35,6 +36,7 @@ const steps = [
 const Index = () => {
   return (
     <main>
+      <SEO />
       <HeroCarousel />
 
       {/* Brand Story */}
@@ -117,7 +119,7 @@ const Index = () => {
       <HorizontalGallery />
 
       {/* How It Works */}
-      <section className="py-12 md:py-16 px-6 md:px-12 lg:px-24">
+      <section className="pt-12 md:pt-18 pb-12 md:pb-16 px-6 md:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto">
           <AnimatedSection className="text-center mb-10">
             <p className="label-caps text-accent mb-3">The Process</p>

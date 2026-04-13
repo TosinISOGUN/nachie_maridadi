@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Phone, MapPin, MessageCircle, Mail } from "lucide-react";
@@ -22,6 +23,11 @@ const Contact = () => {
 
   return (
     <main>
+      <SEO 
+        title="Book a Consultation — Nachie Maridadi"
+        description="Ready to create something beautiful? Book your custom tailoring consultation or reach out via WhatsApp."
+        url="https://nachiemaridadi.vercel.app/contact"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 section-padding">
         <div className="max-w-4xl mx-auto text-center">
@@ -80,8 +86,9 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label className="label-caps text-muted-foreground mb-2 block">Preferred Service</label>
+                <label htmlFor="service-select" className="label-caps text-muted-foreground mb-2 block">Preferred Service</label>
                 <select
+                  id="service-select"
                   value={form.service}
                   onChange={(e) => setForm({ ...form, service: e.target.value })}
                   className="w-full border-b-2 border-border bg-transparent py-3 font-body text-foreground focus:border-accent focus:outline-none transition-colors appearance-none cursor-pointer"

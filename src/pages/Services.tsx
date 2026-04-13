@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
+import SEO from "@/components/SEO";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
@@ -37,6 +38,11 @@ const services = [
 const Services = () => {
   return (
     <main>
+      <SEO 
+        title="Bespoke Services — Nachie Maridadi"
+        description="From bridal Ankara gowns to corporate styling, explore our range of custom tailoring services in Nairobi."
+        url="https://nachiemaridadi.vercel.app/services"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 section-padding">
         <div className="max-w-4xl mx-auto text-center">
