@@ -8,7 +8,10 @@ import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
 import heroMain from "@/assets/hero-main.jpg";
 
-const images = [
+import { useHomePage } from "@/hooks/useSanity";
+import { urlFor } from "@/lib/sanity";
+
+const staticImages = [
   { src: gallery1, alt: "Ankara evening gown" },
   { src: gallery2, alt: "Ankara wrap dress" },
   { src: heroMain, alt: "Statement gown" },
@@ -19,6 +22,12 @@ const images = [
 ];
 
 const HorizontalGallery = () => {
+  const { data: homeData } = useHomePage();
+  const displayImages = (homeData?.horizontalGallery || staticImages).map((item: any) => ({
+    ...item,
+    src: item.image ? urlFor(item.image).width(800).height(1066).url() : item.src,
+  }));
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: number) => {
@@ -59,9 +68,8 @@ const HorizontalGallery = () => {
         <div
           ref={scrollRef}
           className="flex overflow-x-auto scrollbar-hide scroll-smooth"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          {images.map((img, i) => (
+          {displayImages.map((img: any, i: number) => (
             <div
               key={i}
               className="flex-shrink-0 w-[75vw] sm:w-[50vw] md:w-[35vw] lg:w-[28vw] aspect-[3/4] overflow-hidden group/item"

@@ -18,6 +18,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+
   // Pages with dark hero backgrounds where white text works
   const isHeroPage = location.pathname === "/";
 

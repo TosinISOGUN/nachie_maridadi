@@ -11,7 +11,9 @@ import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 import { Scissors, Ruler, Sparkles, Heart } from "lucide-react";
 
-const testimonials = [
+import { useTestimonials, useHomePage } from "@/hooks/useSanity";
+
+const staticTestimonials = [
   {
     name: "Amina W.",
     text: "Nachie Maridadi brought my vision to life. The attention to detail on my wedding Ankara gown was extraordinary. I felt like royalty.",
@@ -26,14 +28,21 @@ const testimonials = [
   },
 ];
 
-const steps = [
-  { icon: Heart, title: "Consultation", desc: "Share your vision, occasion, and style preferences with us." },
-  { icon: Scissors, title: "Fabric Selection", desc: "Choose from premium Ankara prints or bring your own fabric." },
-  { icon: Ruler, title: "Measurements", desc: "Precise measurements taken for a flawless, custom fit." },
-  { icon: Sparkles, title: "Creation & Fitting", desc: "Your piece is crafted with love and perfected to your body." },
+const staticSteps = [
+  { iconName: "Heart", title: "Consultation", desc: "Share your vision, occasion, and style preferences with us." },
+  { iconName: "Scissors", title: "Fabric Selection", desc: "Choose from premium Ankara prints or bring your own fabric." },
+  { iconName: "Ruler", title: "Measurements", desc: "Precise measurements taken for a flawless, custom fit." },
+  { iconName: "Sparkles", title: "Creation & Fitting", desc: "Your piece is crafted with love and perfected to your body." },
 ];
 
+const iconMap: Record<string, any> = { Heart, Scissors, Ruler, Sparkles };
+
 const Index = () => {
+  const { data: testimonialsData } = useTestimonials(staticTestimonials);
+
+  const displaySteps = staticSteps;
+
+
   return (
     <main>
       <SEO />
@@ -126,16 +135,19 @@ const Index = () => {
             <h2 className="heading-section">How It Works</h2>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {steps.map((step, i) => (
-              <AnimatedSection key={i} delay={i * 0.1} className="text-center">
-                <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="text-accent" size={24} />
-                </div>
-                <p className="label-caps text-muted-foreground mb-1">Step {i + 1}</p>
-                <h3 className="font-heading text-lg font-medium mb-2">{step.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
-              </AnimatedSection>
-            ))}
+            {displaySteps.map((step: any, i: number) => {
+              const Icon = iconMap[step.iconName] || iconMap[step.icon] || Heart;
+              return (
+                <AnimatedSection key={i} delay={i * 0.1} className="text-center">
+                  <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="text-accent" size={24} />
+                  </div>
+                  <p className="label-caps text-muted-foreground mb-1">Step {i + 1}</p>
+                  <h3 className="font-heading text-lg font-medium mb-2">{step.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{step.desc || step.description}</p>
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -148,7 +160,7 @@ const Index = () => {
             <h2 className="heading-section text-primary-foreground">Words That Inspire Us</h2>
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {testimonials.map((t, i) => (
+            {testimonialsData?.map((t: any, i: number) => (
               <AnimatedSection key={i} delay={i * 0.15}>
                 <div className="text-center">
                   <div className="w-12 h-px bg-gold mx-auto mb-6" />

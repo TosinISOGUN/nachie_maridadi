@@ -8,34 +8,45 @@ import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import { Sparkles, Crown, PartyPopper, Palette } from "lucide-react";
 
-const services = [
+import { useServices } from "@/hooks/useSanity";
+import { urlFor } from "@/lib/sanity";
+
+const staticServices = [
   {
-    icon: Sparkles,
+    iconName: "Sparkles",
     title: "Custom Dressmaking",
     desc: "From concept to creation — we design and tailor dresses that fit your body, style, and story perfectly. Every garment is a one-of-a-kind masterpiece.",
     image: gallery1,
   },
   {
-    icon: Crown,
+    iconName: "Crown",
     title: "Ankara Styling",
     desc: "We specialize in transforming traditional Ankara prints into modern, sophisticated garments. From bold statement pieces to subtle elegance.",
     image: gallery2,
   },
   {
-    icon: PartyPopper,
+    iconName: "PartyPopper",
     title: "Occasion Wear",
     desc: "Weddings, galas, graduations, or cultural celebrations — we create show-stopping outfits that make you the center of attention.",
     image: gallery4,
   },
   {
-    icon: Palette,
+    iconName: "Palette",
     title: "Fabric Consultation",
     desc: "Not sure where to start? We'll guide you through fabric choices, colors, and styles to find the perfect combination for your vision.",
     image: gallery5,
   },
 ];
 
+const iconMap: Record<string, any> = { Sparkles, Crown, PartyPopper, Palette };
+
 const Services = () => {
+  const { data: sanityServices } = useServices(staticServices);
+  const displayServices = (sanityServices || staticServices).map((service: any) => ({
+    ...service,
+    image: service.image && service.image.asset ? urlFor(service.image).width(1024).url() : service.image,
+  }));
+
   return (
     <main>
       <SEO 
@@ -59,35 +70,38 @@ const Services = () => {
 
       {/* Services */}
       <section className="pb-16">
-        {services.map((service, i) => (
-          <div key={i} className={`section-padding ${i % 2 === 1 ? "bg-secondary/50" : ""}`}>
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-              <AnimatedSection className={i % 2 === 1 ? "order-1 md:order-2" : ""}>
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full aspect-[3/4] object-cover"
-                  loading="lazy"
-                  width={1024}
-                  height={1024}
-                />
-              </AnimatedSection>
-              <AnimatedSection delay={0.2} className={i % 2 === 1 ? "order-2 md:order-1" : ""}>
-                <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-                  <service.icon className="text-accent" size={26} />
-                </div>
-                <h2 className="heading-section mb-4">{service.title}</h2>
-                <div className="divider-gold mb-6" />
-                <p className="text-muted-foreground leading-relaxed mb-8 text-lg">{service.desc}</p>
-                <Link to="/contact">
-                  <Button variant="hero" size="lg">
-                    Book This Service
-                  </Button>
-                </Link>
-              </AnimatedSection>
+        {displayServices.map((service: any, i: number) => {
+          const Icon = iconMap[service.iconName] || iconMap[service.icon] || Sparkles;
+          return (
+            <div key={i} className={`section-padding ${i % 2 === 1 ? "bg-secondary/50" : ""}`}>
+              <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+                <AnimatedSection className={i % 2 === 1 ? "order-1 md:order-2" : ""}>
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full aspect-[3/4] object-cover"
+                    loading="lazy"
+                    width={1024}
+                    height={1024}
+                  />
+                </AnimatedSection>
+                <AnimatedSection delay={0.2} className={i % 2 === 1 ? "order-2 md:order-1" : ""}>
+                  <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+                    <Icon className="text-accent" size={26} />
+                  </div>
+                  <h2 className="heading-section mb-4">{service.title}</h2>
+                  <div className="divider-gold mb-6" />
+                  <p className="text-muted-foreground leading-relaxed mb-8 text-lg">{service.desc || service.description}</p>
+                  <Link to="/contact">
+                    <Button variant="hero" size="lg">
+                      Book This Service
+                    </Button>
+                  </Link>
+                </AnimatedSection>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
 
       {/* CTA */}

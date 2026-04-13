@@ -11,9 +11,10 @@ import heroMain from "@/assets/hero-main.jpg";
 import craftsmanship from "@/assets/craftsmanship.jpg";
 import { cn } from "@/lib/utils";
 
-const categories = ["All", "Ankara Gowns", "Casual", "Corporate", "Bridal"];
+import { usePortfolio } from "@/hooks/useSanity";
+import { urlFor } from "@/lib/sanity";
 
-const galleryItems = [
+const staticGalleryItems = [
   { src: gallery1, alt: "Burgundy and gold Ankara evening gown", category: "Ankara Gowns" },
   { src: gallery2, alt: "Vibrant Ankara wrap dress", category: "Casual" },
   { src: gallery3, alt: "Ankara blazer and skirt set", category: "Corporate" },
@@ -25,11 +26,24 @@ const galleryItems = [
 ];
 
 const Gallery = () => {
+  const { data: galleryData } = usePortfolio(staticGalleryItems);
+  
+  // Ensure we fallback to static items if Sanity returns an empty list
+  const activeItems = (galleryData && galleryData.length > 0) ? galleryData : staticGalleryItems;
+  
+  const displayItems = activeItems.map((item: any) => ({
+    ...item,
+    src: item.image ? urlFor(item.image).width(1200).url() : item.src,
+  }));
+
+
+  const dynamicCategories = ["All", ...new Set(displayItems.map((item: any) => item.category))];
+
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filtered = activeCategory === "All"
-    ? galleryItems
-    : galleryItems.filter((item) => item.category === activeCategory);
+    ? displayItems
+    : displayItems.filter((item: any) => item.category === activeCategory);
 
   return (
     <main>
@@ -55,7 +69,7 @@ const Gallery = () => {
       {/* Filter */}
       <section className="px-6 md:px-12 lg:px-24 pb-8">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-3">
-          {categories.map((cat) => (
+          {dynamicCategories.map((cat: any) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
