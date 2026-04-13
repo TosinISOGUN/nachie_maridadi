@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroCarousel from "@/components/HeroCarousel";
+import BackdropSection from "@/components/BackdropSection";
+import HorizontalGallery from "@/components/HorizontalGallery";
 import craftsmanshipImage from "@/assets/craftsmanship.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
@@ -76,7 +78,7 @@ const Index = () => {
           </AnimatedSection>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { img: gallery1, label: "Evening Wear", cat: "Ankara Gowns" },
+              { img: gallery1, label: "Statement Pieces", cat: "Ankara Gowns" },
               { img: gallery2, label: "Day Wear", cat: "Casual Elegance" },
               { img: gallery3, label: "Corporate", cat: "Power Suiting" },
             ].map((item, i) => (
@@ -111,21 +113,24 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Horizontal Gallery */}
+      <HorizontalGallery />
+
       {/* How It Works */}
-      <section className="section-padding">
+      <section className="py-12 md:py-16 px-6 md:px-12 lg:px-24">
         <div className="max-w-5xl mx-auto">
-          <AnimatedSection className="text-center mb-16">
-            <p className="label-caps text-accent mb-4">The Process</p>
+          <AnimatedSection className="text-center mb-10">
+            <p className="label-caps text-accent mb-3">The Process</p>
             <h2 className="heading-section">How It Works</h2>
           </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {steps.map((step, i) => (
               <AnimatedSection key={i} delay={i * 0.1} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-                  <step.icon className="text-accent" size={28} />
+                <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="text-accent" size={24} />
                 </div>
-                <p className="label-caps text-muted-foreground mb-2">Step {i + 1}</p>
-                <h3 className="font-heading text-lg font-medium mb-3">{step.title}</h3>
+                <p className="label-caps text-muted-foreground mb-1">Step {i + 1}</p>
+                <h3 className="font-heading text-lg font-medium mb-2">{step.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
               </AnimatedSection>
             ))}
@@ -155,6 +160,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Backdrop transition */}
+      <BackdropSection />
 
       {/* CTA */}
       <section className="section-padding text-center">
