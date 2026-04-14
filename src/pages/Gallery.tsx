@@ -31,7 +31,7 @@ const Gallery = () => {
   return (
     <main>
       <SEO 
-        title="Our Creations — Nachie Maridadi Portfolio"
+        title="Our Creations | Nachie Maridadi Portfolio"
         description="A visual journey through our finest bespoke creations. Ankara gowns, power suiting, and elegant occasion wear."
         url="https://nachiemaridadi.vercel.app/gallery"
       />

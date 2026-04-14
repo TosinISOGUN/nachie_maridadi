@@ -58,7 +58,7 @@ const Index = () => {
               At Nachie Maridadi, we believe every woman deserves clothing that tells her story. Rooted in the vibrant traditions of African textile artistry, we craft bespoke garments that celebrate individuality, culture, and elegance.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              From bold Ankara prints to the fabric of your choice, every piece is designed and tailored with meticulous care in our Nairobi atelier — ensuring a perfect fit and an unforgettable look.
+              From bold Ankara prints to the fabric of your choice, every piece is designed and tailored with meticulous care in our Nairobi atelier, ensuring a perfect fit and an unforgettable look.
             </p>
             <Link to="/about">
               <Button variant="hero-outline" size="lg">
@@ -71,13 +71,19 @@ const Index = () => {
 
       {/* Featured Collection */}
       {creationsData.length > 0 && (
-        <section className="section-padding bg-secondary/50">
-          <div className="max-w-7xl mx-auto">
-            <AnimatedSection className="text-center mb-16">
+        <section className="py-20 md:py-28 bg-secondary/50">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 mb-16">
+            <AnimatedSection className="text-center">
               <p className="label-caps text-accent mb-4">Featured</p>
-              <h2 className="heading-section">Our Creations</h2>
+              <h2 className="heading-section mb-6">Our Creations</h2>
+              <p className="body-large text-muted-foreground max-w-2xl mx-auto mb-16">
+                Explore a curated selection of our finest bespoke garments, handcrafted in Nairobi to celebrate your individuality and culture.
+              </p>
             </AnimatedSection>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          </div>
+          
+          <div className="max-w-7xl mx-auto md:px-12 lg:px-24">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
               {creationsData.map((item: any, i: number) => (
                 <AnimatedSection key={i} delay={i * 0.15}>
                   <Link to="/gallery" className="group block overflow-hidden">
@@ -100,7 +106,10 @@ const Index = () => {
                 </AnimatedSection>
               ))}
             </div>
-            <AnimatedSection className="text-center mt-12">
+          </div>
+
+          <div className="max-w-7xl mx-auto pt-12">
+            <AnimatedSection className="text-center">
               <Link to="/gallery">
                 <Button variant="hero-outline" size="lg">
                   View Full Gallery
@@ -110,9 +119,6 @@ const Index = () => {
           </div>
         </section>
       )}
-
-      {/* Horizontal Gallery */}
-      <HorizontalGallery />
 
       {/* How It Works */}
       <section className="pt-12 md:pt-18 pb-12 md:pb-16 px-6 md:px-12 lg:px-24">
@@ -161,6 +167,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Horizontal Gallery - Repositioned to complement testimonials */}
+      <HorizontalGallery />
 
       {/* Backdrop transition */}
       <BackdropSection />

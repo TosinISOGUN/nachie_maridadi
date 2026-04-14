@@ -55,7 +55,7 @@ const HeroCarousel = () => {
             <em className="italic font-normal">{staticSlides[0].subtitle || "With Love"}</em>
           </h1>
           <p className="text-background/80 text-lg md:text-xl max-w-lg mb-10 font-body leading-relaxed">
-            Bespoke women's clothing, handcrafted in Nairobi with premium Ankara and curated fabrics — made uniquely for you.
+            Bespoke women's clothing, handcrafted in Nairobi with premium Ankara and curated fabrics, made uniquely for you.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/contact">

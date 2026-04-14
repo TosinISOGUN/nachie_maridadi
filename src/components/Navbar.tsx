@@ -18,7 +18,6 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-
   // Pages with dark hero backgrounds where white text works
   const isHeroPage = location.pathname === "/";
 
@@ -32,15 +31,18 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
-  // Determine color scheme based on scroll + page
+  // Determine color scheme based on scroll + page + menu state
   const showWhiteBg = scrolled;
+  const isDarkNav = (isHeroPage && !showWhiteBg) || isOpen;
+
   const linkColor = showWhiteBg
     ? "text-foreground/80 hover:text-accent"
-    : isHeroPage
+    : isDarkNav
       ? "text-background/90 hover:text-gold"
       : "text-foreground/80 hover:text-accent";
-  const activeLinkColor = showWhiteBg ? "text-accent" : isHeroPage ? "text-gold" : "text-accent";
-  const hamburgerColor = showWhiteBg ? "text-foreground" : isHeroPage ? "text-background" : "text-foreground";
+
+  const activeLinkColor = showWhiteBg ? "text-accent" : isDarkNav ? "text-gold" : "text-accent";
+  const hamburgerColor = showWhiteBg ? "text-foreground" : isDarkNav ? "text-background" : "text-foreground";
 
   return (
     <nav
@@ -48,7 +50,7 @@ const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         showWhiteBg
           ? "bg-background/95 backdrop-blur-md shadow-lg py-3"
-          : (isHeroPage && isOpen)
+          : isOpen
             ? "bg-black/40 backdrop-blur-xl py-5"
             : "bg-transparent py-5"
       )}
@@ -63,7 +65,7 @@ const Navbar = () => {
               scrolled ? "h-12 md:h-14" : "h-14 md:h-16",
               showWhiteBg
                 ? "brightness-0"
-                : !isHeroPage
+                : (!isHeroPage && !isOpen)
                   ? "brightness-0"
                   : ""
             )}
@@ -108,9 +110,7 @@ const Navbar = () => {
             "md:hidden animate-fade-in",
             showWhiteBg 
               ? "border-t border-border" 
-              : isHeroPage 
-                ? "border-t border-white/10" 
-                : "border-t border-border"
+              : "border-t border-white/10"
           )}
         >
           <div className="flex flex-col items-center py-8 gap-6">
@@ -127,7 +127,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link to="/contact">
-              <Button variant="gold" size="sm" className={cn(!showWhiteBg && isHeroPage && "bg-white text-accent hover:bg-white/90")}>
+              <Button variant="gold" size="sm" className={cn(!showWhiteBg && "bg-white text-accent hover:bg-white/90")}>
                 Book Now
               </Button>
             </Link>

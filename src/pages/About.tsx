@@ -9,7 +9,7 @@ const About = () => {
   return (
     <main>
       <SEO 
-        title="Our Story — Nachie Maridadi"
+        title="Our Story | Nachie Maridadi"
         description="Discover the heritage behind Nachie Maridadi. Handcrafting premium African fashion in our Nairobi atelier."
         url="https://nachiemaridadi.vercel.app/about"
       />
@@ -37,13 +37,13 @@ const About = () => {
             <h2 className="heading-section mb-6">The Heart of Ankara</h2>
             <div className="divider-gold mb-8" />
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Ankara fabric carries centuries of African storytelling. Each pattern tells a tale — of community, celebration, strength, and beauty. At Nachie Maridadi, we honor this tradition by transforming these vibrant textiles into modern, bespoke garments.
+              Ankara fabric carries centuries of African storytelling. Each pattern tells a tale of community, celebration, strength, and beauty. At Nachie Maridadi, we honor this tradition by transforming these vibrant textiles into modern, bespoke garments.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Based in the heart of Nairobi, our atelier is where tradition meets contemporary design. We work closely with each client to understand their story, style, and occasion — then bring it to life stitch by stitch.
+              Based in the heart of Nairobi, our atelier is where tradition meets contemporary design. We work closely with each client to understand their story, style, and occasion, then bring it to life stitch by stitch.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Whether you bring your own fabric or choose from our curated collection, we pour love and precision into every garment. Because for us, fashion isn't just about clothes — it's about confidence, culture, and self-expression.
+              Whether you bring your own fabric or choose from our curated collection, we pour love and precision into every garment. Because for us, fashion isn't just about clothes; it's about confidence, culture, and self-expression.
             </p>
           </AnimatedSection>
         </div>

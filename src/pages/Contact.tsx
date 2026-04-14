@@ -24,7 +24,7 @@ const Contact = () => {
   return (
     <main>
       <SEO 
-        title="Book a Consultation — Nachie Maridadi"
+        title="Book a Consultation | Nachie Maridadi"
         description="Ready to create something beautiful? Book your custom tailoring consultation or reach out via WhatsApp."
         url="https://nachiemaridadi.vercel.app/contact"
       />
@@ -193,8 +193,8 @@ const Contact = () => {
 
               <div className="mt-10 pt-8 border-t border-primary-foreground/10">
                 <p className="text-primary-foreground/40 text-sm">
-                  Mon – Fri: 9:00 AM – 6:00 PM<br />
-                  Sat – Sun: By Appointment
+                  Mon to Fri: 9:00 AM to 6:00 PM<br />
+                  Sat & Sun: By Appointment
                 </p>
               </div>
             </div>

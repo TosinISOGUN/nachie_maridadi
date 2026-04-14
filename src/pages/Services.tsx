@@ -12,7 +12,7 @@ const services = [
   {
     icon: Sparkles,
     title: "Custom Dressmaking",
-    desc: "From concept to creation — we design and tailor dresses that fit your body, style, and story perfectly. Every garment is a one-of-a-kind masterpiece.",
+    desc: "From concept to creation, we design and tailor dresses that fit your body, style, and story perfectly. Every garment is a one-of-a-kind masterpiece.",
     image: gallery1,
   },
   {
@@ -24,7 +24,7 @@ const services = [
   {
     icon: PartyPopper,
     title: "Occasion Wear",
-    desc: "Weddings, galas, graduations, or cultural celebrations — we create show-stopping outfits that make you the center of attention.",
+    desc: "Weddings, galas, graduations, or cultural celebrations, we create show-stopping outfits that make you the center of attention.",
     image: gallery4,
   },
   {
@@ -39,7 +39,7 @@ const Services = () => {
   return (
     <main>
       <SEO 
-        title="Bespoke Services — Nachie Maridadi"
+        title="Bespoke Services | Nachie Maridadi"
         description="From bridal Ankara gowns to corporate styling, explore our range of custom tailoring services in Nairobi."
         url="https://nachiemaridadi.vercel.app/services"
       />
@@ -51,7 +51,7 @@ const Services = () => {
             <h1 className="heading-display mb-6">Our Services</h1>
             <div className="divider-gold mx-auto mb-8" />
             <p className="body-large text-muted-foreground max-w-2xl mx-auto">
-              Every service is designed around you — your body, your style, your story. We don't do off-the-rack; we do exceptional.
+              Every service is designed around you, your body, your style, your story. We don't do off-the-rack; we do exceptional.
             </p>
           </AnimatedSection>
         </div>

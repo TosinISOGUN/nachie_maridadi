@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 const SEO = ({
-  title = "Nachie Maridadi — Bespoke African Fashion | Nairobi",
+  title = "Nachie Maridadi | Bespoke African Fashion | Nairobi",
   description = "Nachie Maridadi creates bespoke women's clothing with premium Ankara and curated fabrics in Nairobi, Kenya. Customized with love.",
   image = "https://nachiemaridadi.vercel.app/og-image.jpg",
   url = "https://nachiemaridadi.vercel.app/",
