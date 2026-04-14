@@ -30,7 +30,7 @@ const Index = () => {
 
   const displaySteps = staticSteps;
 
-  const creationsData = homePageData?.featuredCreations || [];
+  const creationsData = (homePageData?.featuredCreations || []).slice(0, 3);
 
   return (
     <main>

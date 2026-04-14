@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import { cn } from "@/lib/utils";
@@ -91,6 +93,23 @@ const Gallery = () => {
             </AnimatedSection>
           ))}
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding bg-[hsl(30,20%,22%)] text-white text-center">
+        <AnimatedSection>
+          <div className="max-w-2xl mx-auto">
+            <h2 className="heading-section text-white mb-6">Inspired by what you see?</h2>
+            <p className="text-white/80 text-lg mb-10">
+              Your own bespoke masterpiece is just a conversation away. Let's bring your vision to life.
+            </p>
+            <Link to="/contact">
+              <Button variant="gold" size="lg" className="px-12 py-6 bg-white text-accent hover:bg-white/90">
+                Book a Consultation
+              </Button>
+            </Link>
+          </div>
+        </AnimatedSection>
       </section>
     </main>
   );
