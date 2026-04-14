@@ -76,15 +76,15 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-foreground text-primary-foreground text-center">
+      <section className="section-padding bg-[hsl(30,20%,22%)] text-white text-center">
         <AnimatedSection>
           <div className="max-w-2xl mx-auto">
-            <h2 className="heading-section text-primary-foreground mb-6">Let's Tell Your Story</h2>
-            <p className="text-primary-foreground/70 text-lg mb-10">
+            <h2 className="heading-section text-white mb-6">Let's Tell Your Story</h2>
+            <p className="text-white/80 text-lg mb-10">
               Book a consultation and let us create something beautiful — just for you.
             </p>
             <Link to="/contact">
-              <Button variant="gold" size="lg" className="px-12 py-6">
+              <Button variant="gold" size="lg" className="px-12 py-6 bg-white text-accent hover:bg-white/90">
                 Book a Consultation
               </Button>
             </Link>

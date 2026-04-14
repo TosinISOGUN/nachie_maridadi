@@ -49,13 +49,34 @@ const Footer = () => {
                 Nairobi, Kenya
               </div>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/nachie_maridadi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-primary-foreground/60 hover:text-gold transition-colors text-sm"
               >
                 <Instagram size={16} />
-                @nachiemaridadi
+                @nachie_maridadi
+              </a>
+              <a
+                href="https://www.tiktok.com/@nachie_maridadi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-primary-foreground/60 hover:text-gold transition-colors text-sm"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+                TikTok
               </a>
             </div>
           </div>

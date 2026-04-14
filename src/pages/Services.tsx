@@ -58,7 +58,7 @@ const Services = () => {
       </section>
 
       {/* Services */}
-      <section className="pb-16">
+      <section>
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
@@ -68,10 +68,10 @@ const Services = () => {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full aspect-[3/4] object-cover"
+                    className="w-full max-w-xl mx-auto aspect-[4/5] object-cover rounded-sm shadow-[0_30px_60px_-12px_rgba(0,0,0,0.45)]"
                     loading="lazy"
-                    width={1024}
-                    height={1024}
+                    width={800}
+                    height={1000}
                   />
                 </AnimatedSection>
                 <AnimatedSection delay={0.2} className={i % 2 === 1 ? "order-2 md:order-1" : ""}>
@@ -94,21 +94,21 @@ const Services = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-foreground text-primary-foreground text-center">
+      <section className="section-padding bg-[hsl(30,20%,22%)] text-white text-center">
         <AnimatedSection>
           <div className="max-w-2xl mx-auto">
-            <h2 className="heading-section text-primary-foreground mb-6">Not Sure What You Need?</h2>
-            <p className="text-primary-foreground/70 text-lg mb-10">
+            <h2 className="heading-section text-white mb-6">Not Sure What You Need?</h2>
+            <p className="text-white/80 text-lg mb-10">
               Let's have a conversation. We'll help you figure out the perfect service for your occasion and style.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/contact">
-                <Button variant="gold" size="lg" className="px-12 py-6">
+                <Button variant="gold" size="lg" className="px-12 py-6 bg-white text-accent hover:bg-white/90">
                   Get in Touch
                 </Button>
               </Link>
               <a href="https://wa.me/254795680206" target="_blank" rel="noopener noreferrer">
-                <Button variant="hero-outline" size="lg" className="px-12 py-6 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-foreground">
+                <Button variant="hero-outline" size="lg" className="px-12 py-6 border-white text-white hover:bg-white hover:text-accent">
                   WhatsApp Us
                 </Button>
               </a>

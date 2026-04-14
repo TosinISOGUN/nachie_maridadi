@@ -2,7 +2,7 @@ import { useState } from "react";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Phone, MapPin, MessageCircle, Mail } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Mail, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useToast } from "@/hooks/use-toast";
 
@@ -151,6 +151,42 @@ const Contact = () => {
                       <p className="label-caps text-primary-foreground/50 mb-1">Location</p>
                       <p className="text-lg">Nairobi, Kenya</p>
                     </div>
+                  </div>
+                </div>
+
+                <div className="mt-10 pt-8 border-t border-primary-foreground/10 space-y-4">
+                  <p className="label-caps text-primary-foreground/50">Follow Us</p>
+                  <div className="flex gap-6">
+                    <a
+                      href="https://www.instagram.com/nachie_maridadi/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-foreground/60 hover:text-gold transition-colors flex items-center gap-2"
+                    >
+                      <Instagram size={20} />
+                      <span className="text-sm">Instagram</span>
+                    </a>
+                    <a
+                      href="https://www.tiktok.com/@nachie_maridadi"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-foreground/60 hover:text-gold transition-colors flex items-center gap-2"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                      </svg>
+                      <span className="text-sm">TikTok</span>
+                    </a>
                   </div>
                 </div>
               </div>

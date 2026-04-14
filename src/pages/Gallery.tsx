@@ -12,10 +12,13 @@ const Gallery = () => {
   const displayItems = (galleryData || []).map((item: any) => ({
     ...item,
     src: item.image ? urlFor(item.image).width(1200).url() : "",
+    alt: item.altText || item.title || "Gallery image",
   }));
 
-
-  const dynamicCategories = ["All", ...new Set(displayItems.map((item: any) => item.category))];
+  const dynamicCategories = [
+    "All",
+    ...new Set(displayItems.map((item: any) => item.category).filter(Boolean)),
+  ];
 
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -68,7 +71,7 @@ const Gallery = () => {
       <section className="px-6 md:px-12 lg:px-24 pb-24">
         <div className="max-w-7xl mx-auto columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
           {filtered.map((item, i) => (
-            <AnimatedSection key={`${item.alt}-${activeCategory}`} delay={i * 0.05}>
+            <AnimatedSection key={item._id || i} delay={i * 0.05}>
               <div className="break-inside-avoid overflow-hidden group cursor-pointer">
                 <div className="relative overflow-hidden">
                   <img

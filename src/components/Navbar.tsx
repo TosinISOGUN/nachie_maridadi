@@ -48,7 +48,9 @@ const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         showWhiteBg
           ? "bg-background/95 backdrop-blur-md shadow-lg py-3"
-          : "bg-transparent py-5"
+          : (isHeroPage && isOpen)
+            ? "bg-black/40 backdrop-blur-xl py-5"
+            : "bg-transparent py-5"
       )}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -101,22 +103,31 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-background/98 backdrop-blur-md border-t border-border animate-fade-in">
+        <div 
+          className={cn(
+            "md:hidden animate-fade-in",
+            showWhiteBg 
+              ? "border-t border-border" 
+              : isHeroPage 
+                ? "border-t border-white/10" 
+                : "border-t border-border"
+          )}
+        >
           <div className="flex flex-col items-center py-8 gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "label-caps transition-colors duration-300",
-                  location.pathname === link.path ? "text-accent" : "text-foreground/70"
+                  "label-caps transition-colors duration-300 px-4 py-2",
+                  location.pathname === link.path ? activeLinkColor : linkColor
                 )}
               >
                 {link.label}
               </Link>
             ))}
             <Link to="/contact">
-              <Button variant="gold" size="sm">
+              <Button variant="gold" size="sm" className={cn(!showWhiteBg && isHeroPage && "bg-white text-accent hover:bg-white/90")}>
                 Book Now
               </Button>
             </Link>
