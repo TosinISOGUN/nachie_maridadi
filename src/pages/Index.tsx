@@ -86,23 +86,26 @@ const Index = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
               {creationsData.map((item: any, i: number) => (
                 <AnimatedSection key={i} delay={i * 0.15}>
-                  <Link to="/gallery" className="group block overflow-hidden">
+                  <div className="group block overflow-hidden border-border/10">
                     <div className="relative overflow-hidden aspect-[3/4]">
                       <img
                         src={item.image ? urlFor(item.image).url() : ""}
                         alt={item.label}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                         loading="lazy"
                         width={1024}
                         height={1024}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      {/* Permanent gradient overlay for readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-transparent to-transparent opacity-90 transition-opacity duration-500" />
+                      
+                      {/* Permanently visible labels */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6 transition-all duration-500">
                         <p className="label-caps text-gold-light mb-1">{item.category}</p>
                         <p className="font-heading text-xl text-background">{item.label}</p>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </AnimatedSection>
               ))}
             </div>
