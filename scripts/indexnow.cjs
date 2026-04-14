@@ -30,11 +30,17 @@ const options = {
 };
 
 const req = https.request(options, (res) => {
-  console.log(`IndexNow status: ${res.statusCode}`);
+  console.log(`IndexNow: pinged successfully (status ${res.statusCode})`);
+});
+
+req.setTimeout(5000, () => {
+  console.log('IndexNow: request timed out (non-critical, skipping)');
+  req.destroy();
 });
 
 req.on('error', (e) => {
-  console.error(`IndexNow error: ${e.message}`);
+  // Network errors are non-critical — IndexNow is just an SEO optimization
+  console.log(`IndexNow: ping skipped (${e.message}) — this is non-critical`);
 });
 
 req.write(data);

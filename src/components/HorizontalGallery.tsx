@@ -44,11 +44,8 @@ const HorizontalGallery = () => {
       </div>
 
       <div className="relative group">
-        {/* Edge fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
-
         {/* Arrows */}
+
         <button
           onClick={() => scroll(-1)}
           className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-background/60 backdrop-blur-sm border border-border/50 flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-background/80 transition-all duration-300"

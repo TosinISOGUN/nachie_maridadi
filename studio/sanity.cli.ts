@@ -9,10 +9,12 @@ export default defineCliConfig({
    * Enable auto-updates for this studio.
    * Learn more at https://www.sanity.io/docs/scheduled-updates
    */
-  studioHost: 'nachie-maridadi',
+  studioHost: 'nachiemaridadi',
   deployment: {
-    appId: 'lescrt28ci7bk2ur4cjtdfvd',
+    appId: 'minefpa20qdet2wdvvttgb5v',
   },
 });
+
+
 
 

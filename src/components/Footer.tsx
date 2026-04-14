@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/">
-              <img src={logo} alt="Nachie Maridadi" className="h-12 w-auto mb-6" />
+              <img src={logo} alt="Nachie Maridadi" className="h-16 w-auto mb-6" />
             </Link>
             <p className="text-primary-foreground/60 text-sm leading-relaxed">
               Bespoke women's fashion crafted with passion, precision, and the finest African fabrics.
