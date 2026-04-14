@@ -22,7 +22,7 @@ const HorizontalGallery = () => {
   return (
     <section className="relative pt-20 md:pt-28 pb-0 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
-        <p className="label-caps text-accent mb-4">Our Clients</p>
+        <p className="label-caps text-accent mb-4">Nachie Maridadi Babes</p>
         <h2 className="font-body text-xl md:text-2xl italic text-foreground/80">Beautiful Moments — Our Clients, Captured in Nachie Maridadi</h2>
       </div>
 

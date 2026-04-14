@@ -12,6 +12,7 @@ import gallery3 from "@/assets/gallery-3.jpg";
 import { Scissors, Ruler, Sparkles, Heart } from "lucide-react";
 
 import { useTestimonials, useHomePage } from "@/hooks/useSanity";
+import { urlFor } from "@/lib/sanity";
 
 
 const staticSteps = [
@@ -25,9 +26,11 @@ const iconMap: Record<string, any> = { Heart, Scissors, Ruler, Sparkles };
 
 const Index = () => {
   const { data: testimonialsData } = useTestimonials();
+  const { data: homePageData } = useHomePage();
 
   const displaySteps = staticSteps;
 
+  const creationsData = homePageData?.featuredCreations || [];
 
   return (
     <main>
@@ -67,48 +70,46 @@ const Index = () => {
       </section>
 
       {/* Featured Collection */}
-      <section className="section-padding bg-secondary/50">
-        <div className="max-w-7xl mx-auto">
-          <AnimatedSection className="text-center mb-16">
-            <p className="label-caps text-accent mb-4">Featured</p>
-            <h2 className="heading-section">Our Creations</h2>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { img: gallery1, label: "Statement Pieces", cat: "Ankara Gowns" },
-              { img: gallery2, label: "Day Wear", cat: "Casual Elegance" },
-              { img: gallery3, label: "Corporate", cat: "Power Suiting" },
-            ].map((item, i) => (
-              <AnimatedSection key={i} delay={i * 0.15}>
-                <Link to="/gallery" className="group block overflow-hidden">
-                  <div className="relative overflow-hidden aspect-[3/4]">
-                    <img
-                      src={item.img}
-                      alt={item.label}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                      width={1024}
-                      height={1024}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                      <p className="label-caps text-gold-light mb-1">{item.cat}</p>
-                      <p className="font-heading text-xl text-background">{item.label}</p>
+      {creationsData.length > 0 && (
+        <section className="section-padding bg-secondary/50">
+          <div className="max-w-7xl mx-auto">
+            <AnimatedSection className="text-center mb-16">
+              <p className="label-caps text-accent mb-4">Featured</p>
+              <h2 className="heading-section">Our Creations</h2>
+            </AnimatedSection>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {creationsData.map((item: any, i: number) => (
+                <AnimatedSection key={i} delay={i * 0.15}>
+                  <Link to="/gallery" className="group block overflow-hidden">
+                    <div className="relative overflow-hidden aspect-[3/4]">
+                      <img
+                        src={item.image ? urlFor(item.image).url() : ""}
+                        alt={item.label}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        loading="lazy"
+                        width={1024}
+                        height={1024}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <p className="label-caps text-gold-light mb-1">{item.category}</p>
+                        <p className="font-heading text-xl text-background">{item.label}</p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </AnimatedSection>
-            ))}
+                  </Link>
+                </AnimatedSection>
+              ))}
+            </div>
+            <AnimatedSection className="text-center mt-12">
+              <Link to="/gallery">
+                <Button variant="hero-outline" size="lg">
+                  View Full Gallery
+                </Button>
+              </Link>
+            </AnimatedSection>
           </div>
-          <AnimatedSection className="text-center mt-12">
-            <Link to="/gallery">
-              <Button variant="hero-outline" size="lg">
-                View Full Gallery
-              </Button>
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Horizontal Gallery */}
       <HorizontalGallery />

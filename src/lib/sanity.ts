@@ -34,4 +34,5 @@ export function urlFor(source: any) {
 export const TESTIMONIALS_QUERY = `*[_type == "testimonial" && isFeatured == true]`;
 export const GALLERY_QUERY = `*[_type == "galleryItem"]`;
 export const HOME_PAGE_QUERY = `*[_type == "homePage"][0]`;
+// This query is simple because we use urlFor for images and use optional chaining in the frontend.
 
