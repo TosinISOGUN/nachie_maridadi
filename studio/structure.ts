@@ -18,6 +18,5 @@ export const structure: StructureResolver = (S) =>
 
       // Regular Documents
       S.documentTypeListItem('galleryItem').title('Portfolio Gallery'),
-      S.documentTypeListItem('service').title('Services'),
       S.documentTypeListItem('testimonial').title('Testimonials'),
     ]);

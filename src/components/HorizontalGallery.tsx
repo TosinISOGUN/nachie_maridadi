@@ -1,31 +1,14 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import heroMain from "@/assets/hero-main.jpg";
-
 import { useHomePage } from "@/hooks/useSanity";
 import { urlFor } from "@/lib/sanity";
 
-const staticImages = [
-  { src: gallery1, alt: "Ankara evening gown" },
-  { src: gallery2, alt: "Ankara wrap dress" },
-  { src: heroMain, alt: "Statement gown" },
-  { src: gallery3, alt: "Corporate Ankara set" },
-  { src: gallery4, alt: "Bridal Ankara dress" },
-  { src: gallery5, alt: "Casual Ankara jumpsuit" },
-  { src: gallery6, alt: "Ankara ball gown" },
-];
 
 const HorizontalGallery = () => {
   const { data: homeData } = useHomePage();
-  const displayImages = (homeData?.horizontalGallery || staticImages).map((item: any) => ({
+  const displayImages = (homeData?.horizontalGallery || []).map((item: any) => ({
     ...item,
-    src: item.image ? urlFor(item.image).width(800).height(1066).url() : item.src,
+    src: item.image ? urlFor(item.image).width(800).height(1066).url() : "",
   }));
 
   const scrollRef = useRef<HTMLDivElement>(null);

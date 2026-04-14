@@ -1,39 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
-import { client, TESTIMONIALS_QUERY, SERVICES_QUERY, GALLERY_QUERY, HOME_PAGE_QUERY } from '@/lib/sanity';
+import { client, TESTIMONIALS_QUERY, GALLERY_QUERY, HOME_PAGE_QUERY } from '@/lib/sanity';
 
-export function useTestimonials(fallback: any[]) {
+export function useTestimonials() {
   return useQuery({
     queryKey: ['testimonials'],
     queryFn: async () => {
-      if (!client) return fallback;
+      if (!client) return [];
       const data = await client.fetch(TESTIMONIALS_QUERY);
-      return data || fallback;
+      return data || [];
     },
-    initialData: fallback,
+    initialData: [],
   });
 }
 
-export function useServices(fallback: any[]) {
-  return useQuery({
-    queryKey: ['services'],
-    queryFn: async () => {
-      if (!client) return fallback;
-      const data = await client.fetch(SERVICES_QUERY);
-      return data || fallback;
-    },
-    initialData: fallback,
-  });
-}
 
-export function usePortfolio(fallback: any[]) {
+export function usePortfolio() {
   return useQuery({
     queryKey: ['portfolio'],
     queryFn: async () => {
-      if (!client) return fallback;
+      if (!client) return [];
       const data = await client.fetch(GALLERY_QUERY);
-      return data || fallback;
+      return data || [];
     },
-    initialData: fallback,
+    initialData: [],
   });
 }
 

@@ -8,45 +8,34 @@ import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import { Sparkles, Crown, PartyPopper, Palette } from "lucide-react";
 
-import { useServices } from "@/hooks/useSanity";
-import { urlFor } from "@/lib/sanity";
-
-const staticServices = [
+const services = [
   {
-    iconName: "Sparkles",
+    icon: Sparkles,
     title: "Custom Dressmaking",
     desc: "From concept to creation — we design and tailor dresses that fit your body, style, and story perfectly. Every garment is a one-of-a-kind masterpiece.",
     image: gallery1,
   },
   {
-    iconName: "Crown",
+    icon: Crown,
     title: "Ankara Styling",
     desc: "We specialize in transforming traditional Ankara prints into modern, sophisticated garments. From bold statement pieces to subtle elegance.",
     image: gallery2,
   },
   {
-    iconName: "PartyPopper",
+    icon: PartyPopper,
     title: "Occasion Wear",
     desc: "Weddings, galas, graduations, or cultural celebrations — we create show-stopping outfits that make you the center of attention.",
     image: gallery4,
   },
   {
-    iconName: "Palette",
+    icon: Palette,
     title: "Fabric Consultation",
     desc: "Not sure where to start? We'll guide you through fabric choices, colors, and styles to find the perfect combination for your vision.",
     image: gallery5,
   },
 ];
 
-const iconMap: Record<string, any> = { Sparkles, Crown, PartyPopper, Palette };
-
 const Services = () => {
-  const { data: sanityServices } = useServices(staticServices);
-  const displayServices = (sanityServices || staticServices).map((service: any) => ({
-    ...service,
-    image: service.image && service.image.asset ? urlFor(service.image).width(1024).url() : service.image,
-  }));
-
   return (
     <main>
       <SEO 
@@ -70,8 +59,8 @@ const Services = () => {
 
       {/* Services */}
       <section className="pb-16">
-        {displayServices.map((service: any, i: number) => {
-          const Icon = iconMap[service.iconName] || iconMap[service.icon] || Sparkles;
+        {services.map((service, i) => {
+          const Icon = service.icon;
           return (
             <div key={i} className={`section-padding ${i % 2 === 1 ? "bg-secondary/50" : ""}`}>
               <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
@@ -91,7 +80,7 @@ const Services = () => {
                   </div>
                   <h2 className="heading-section mb-4">{service.title}</h2>
                   <div className="divider-gold mb-6" />
-                  <p className="text-muted-foreground leading-relaxed mb-8 text-lg">{service.desc || service.description}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-8 text-lg">{service.desc}</p>
                   <Link to="/contact">
                     <Button variant="hero" size="lg">
                       Book This Service

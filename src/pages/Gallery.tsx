@@ -1,39 +1,17 @@
 import { useState } from "react";
 import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
-import heroMain from "@/assets/hero-main.jpg";
-import craftsmanship from "@/assets/craftsmanship.jpg";
 import { cn } from "@/lib/utils";
 
 import { usePortfolio } from "@/hooks/useSanity";
 import { urlFor } from "@/lib/sanity";
 
-const staticGalleryItems = [
-  { src: gallery1, alt: "Burgundy and gold Ankara evening gown", category: "Ankara Gowns" },
-  { src: gallery2, alt: "Vibrant Ankara wrap dress", category: "Casual" },
-  { src: gallery3, alt: "Ankara blazer and skirt set", category: "Corporate" },
-  { src: gallery4, alt: "White and gold bridal Ankara dress", category: "Bridal" },
-  { src: gallery5, alt: "Ankara jumpsuit casual wear", category: "Casual" },
-  { src: gallery6, alt: "Purple and gold Ankara ball gown", category: "Ankara Gowns" },
-  { src: heroMain, alt: "Statement Ankara strapless gown", category: "Ankara Gowns" },
-  { src: craftsmanship, alt: "Handcrafted tailoring detail", category: "Casual" },
-];
-
 const Gallery = () => {
-  const { data: galleryData } = usePortfolio(staticGalleryItems);
+  const { data: galleryData } = usePortfolio();
   
-  // Ensure we fallback to static items if Sanity returns an empty list
-  const activeItems = (galleryData && galleryData.length > 0) ? galleryData : staticGalleryItems;
-  
-  const displayItems = activeItems.map((item: any) => ({
+  const displayItems = (galleryData || []).map((item: any) => ({
     ...item,
-    src: item.image ? urlFor(item.image).width(1200).url() : item.src,
+    src: item.image ? urlFor(item.image).width(1200).url() : "",
   }));
 
 

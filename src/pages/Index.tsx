@@ -13,20 +13,6 @@ import { Scissors, Ruler, Sparkles, Heart } from "lucide-react";
 
 import { useTestimonials, useHomePage } from "@/hooks/useSanity";
 
-const staticTestimonials = [
-  {
-    name: "Amina W.",
-    text: "Nachie Maridadi brought my vision to life. The attention to detail on my wedding Ankara gown was extraordinary. I felt like royalty.",
-  },
-  {
-    name: "Grace M.",
-    text: "From fabric selection to the final fitting, every step was a dream. My custom dress was the talk of the entire event!",
-  },
-  {
-    name: "Sarah K.",
-    text: "I've never felt more beautiful. The craftsmanship, the fit, the fabric — everything was perfection. I'm a client for life.",
-  },
-];
 
 const staticSteps = [
   { iconName: "Heart", title: "Consultation", desc: "Share your vision, occasion, and style preferences with us." },
@@ -38,7 +24,7 @@ const staticSteps = [
 const iconMap: Record<string, any> = { Heart, Scissors, Ruler, Sparkles };
 
 const Index = () => {
-  const { data: testimonialsData } = useTestimonials(staticTestimonials);
+  const { data: testimonialsData } = useTestimonials();
 
   const displaySteps = staticSteps;
 

@@ -32,7 +32,6 @@ export function urlFor(source: any) {
 
 // GROQ Queries
 export const TESTIMONIALS_QUERY = `*[_type == "testimonial" && isFeatured == true]`;
-export const SERVICES_QUERY = `*[_type == "service"]`;
 export const GALLERY_QUERY = `*[_type == "galleryItem"]`;
 export const HOME_PAGE_QUERY = `*[_type == "homePage"][0]`;
 
