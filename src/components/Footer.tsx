@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, MapPin, Instagram } from "lucide-react";
+import { Phone, MapPin, Instagram, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -49,6 +49,13 @@ const Footer = () => {
                 Nairobi, Kenya
               </div>
               <a
+                href="mailto:naomi01williams@gmail.com"
+                className="flex items-center gap-3 text-primary-foreground/60 hover:text-gold transition-colors text-sm"
+              >
+                <Mail size={16} />
+                naomi01williams@gmail.com
+              </a>
+              <a
                 href="https://www.instagram.com/nachie_maridadi/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -58,7 +65,7 @@ const Footer = () => {
                 @nachie_maridadi
               </a>
               <a
-                href="https://www.tiktok.com/@nachie_maridadi"
+                href="https://www.tiktok.com/@01nachie"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-primary-foreground/60 hover:text-gold transition-colors text-sm"

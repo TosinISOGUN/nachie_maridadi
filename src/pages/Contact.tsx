@@ -138,13 +138,13 @@ const Contact = () => {
                       <p className="text-lg">+254 795 680 206</p>
                     </div>
                   </a>
-                  <div className="flex items-start gap-4 text-primary-foreground/70">
+                  <a href="mailto:naomi01williams@gmail.com" className="flex items-start gap-4 text-primary-foreground/70 hover:text-gold transition-colors">
                     <Mail size={20} className="mt-0.5 shrink-0" />
                     <div>
                       <p className="label-caps text-primary-foreground/50 mb-1">Email</p>
-                      <p className="text-lg">hello@nachiemaridadi.com</p>
+                      <p className="text-lg">naomi01williams@gmail.com</p>
                     </div>
-                  </div>
+                  </a>
                   <div className="flex items-start gap-4 text-primary-foreground/70">
                     <MapPin size={20} className="mt-0.5 shrink-0" />
                     <div>
@@ -167,7 +167,7 @@ const Contact = () => {
                       <span className="text-sm">Instagram</span>
                     </a>
                     <a
-                      href="https://www.tiktok.com/@nachie_maridadi"
+                      href="https://www.tiktok.com/@01nachie"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary-foreground/60 hover:text-gold transition-colors flex items-center gap-2"
